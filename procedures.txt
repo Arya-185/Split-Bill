@@ -1,0 +1,5 @@
+procedures : 
+	reg_detail_insert(name vc,phone vc,gender vc,password vc)
+	reg_detail_update(name vc,phone vc,gender vc,password vc,sr_no int)
+	reg_detail_delete(sr_no int)
+	reg_detail_select(sr_no int)
