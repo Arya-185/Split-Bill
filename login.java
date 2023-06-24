@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -25,8 +24,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author 91722
  */
-@WebServlet(name = "signup", urlPatterns = {"/signup"})
-public class signup extends HttpServlet {
+@WebServlet(name = "login", urlPatterns = {"/login"})
+public class login extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,37 +40,35 @@ public class signup extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            Statement st = null;
-            if(request.getParameter("signin")!=null)
+        Statement st = null;
+if(request.getParameter("login")!=null)
             {
                 Connection cn = connect.getCon();
                 CallableStatement cs=null;
                 ResultSet rs = null ;
-                String name = "";
-                String gender = "";
+                
                 String phone = "";
-                String password = "";
-                name = request.getParameter("name");
-                gender = request.getParameter("gtxt");
-                phone = request.getParameter("pnum");
-                password = request.getParameter("pass");
-                System.out.println(name+gender+phone+password);
-                String qr = "INSERT INTO `reg_detail`(`name`, `phone`, `gender`, `password`) VALUES ('"+name+"','"+phone+"','"+gender+"','"+password+"')";
+                String pass = "";
+                phone = request.getParameter("ptxt");
+                pass = request.getParameter("pass");
+                System.out.println(phone+pass);
+                String qr = "SELECT * FROM `reg_detail` WHERE `phone`='"+phone+"' AND binary `password`='"+pass+"'";
+                
+            try {
                 st=cn.createStatement();
-                st.executeUpdate(qr);
-                /*cs = cn.prepareCall("call reg_detail_insert(?,?,?,?)");
-               
-                cs.setString(1, name);
-                cs.setString(2, phone);
-                cs.setString(3, gender);
-                cs.setString(4, password);
-                cs.executeUpdate();  */
-                response.sendRedirect("home.jsp");
+                rs= st.executeQuery(qr);
+            } catch (SQLException ex) {
+                Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-        catch(Exception e1)
-        {
-            System.out.println(e1);
+                if(rs!=null)
+                {
+                    response.sendRedirect("home.jsp");
+                }
+                else
+                {
+                     response.sendRedirect("index.jsp");
+                }
+            }
         }
     }
 
