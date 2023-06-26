@@ -9,10 +9,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Home </title>
     </head>
     <body>
         <form>
+        <input type="submit" value="Events" name="Event" formaction="event.jsp"/></br></br>
+        <input type="submit" value="Profile" name="profile" formaction="profile.jsp" /></br></br>
         <input type="submit" value="logout" name="Logout" formaction="index.jsp"/>
         </form>
         </body>

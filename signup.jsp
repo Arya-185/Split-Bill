@@ -9,13 +9,13 @@
     <html>
         <head>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
-            <title> Registeration </title>
+            <title> Registration page </title>
         </head>
         <body>
             <form name="frm1" method="post" action="signup">
-                Enter your name:<input type="text" name="name" value=""/></br></br>
-                Phone:<input type="tel" name="pnum" value=""></br></br>
-                Gender:<input type="radio" name="gtxt" value="Male">Male<input type="radio" name="gtxt" value="Female">Female</br></br>
+                Enter your name:<input type="text" name="name" value=""/></br>
+                Phone:<input type="tel" name="pnum" value=""></br>
+                Gender:<input type="radio" name="gtxt" value="Male">Male<input type="radio" name="gtxt" value="Female">Female</br>
                 password:<input type="password" name="pass" value=""/></br></br>
                 <input type="submit" value="Sign In" name="signin"/>
             </form>
