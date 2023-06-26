@@ -12,7 +12,6 @@ import java.sql.*;
  * @author 91722
  */
 public class connect {
-    static Connection cn=null;
     
     public static Connection getCon()
     {
